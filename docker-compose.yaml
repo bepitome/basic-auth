@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+    
+    # mongodb container
+    mongodb:
+        image: mongo
+        container_name: mongodb
+        ports:
+            # host:container
+            - 27017:27017
+        volumes:
+            - data:/data
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=
+            - MONGO_INITDB_ROOT_PASSWORD=
+
+    # mongo-express container
+    mongo-express:
+        image: mongo-express
+        container_name: mongo-express
+        restart: always
+        ports:
+            # host:container
+            - 8081:8081
+        environment:
+            - ME_CONFIG_MONGODB_ADMINUSERNAME=
+            - ME_CONFIG_MONGODB_ADMINPASSWORD=
+            - ME_CONFIG_MONGODB_SERVER=mongodb
+        depends_on:
+            - mongodb
+
+    # to fill the database with dummy data
+    mongo-seed:
+        build: ./mongo_seed
+        links:
+            - mongodb
+        depends_on:
+            - mongodb
+
+volumes:
+    data: {}
+
+# helps us to communicate among containers
+networks:
+    default:
+        name: mongodb_network

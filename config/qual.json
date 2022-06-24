@@ -1,0 +1,8 @@
+{
+  "connectionLimit": "20",
+  "port": "3306",
+  "debug": "false",
+  "timezone": "UTC+0",
+  "ssl": false,
+  "mongo_conn_str": ""
+}

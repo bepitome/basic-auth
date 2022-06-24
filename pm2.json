@@ -1,0 +1,6 @@
+{
+    "name": "TestNode",
+    "script": "./server.js",
+    "instances": "1"
+  }
+  
