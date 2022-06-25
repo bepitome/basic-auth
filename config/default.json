@@ -4,5 +4,5 @@
     "debug": "false",
     "timezone": "UTC+0",
     "ssl": false,
-    "mongo_conn_str": "mongodb://localhost:27017"
+    "mongo_conn_str": ""
 }

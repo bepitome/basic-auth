@@ -7,9 +7,10 @@ services:
         container_name: mongodb
         ports:
             # host:container
-            - 27017:27017
+            - 2717:27017
         volumes:
-            - data:/data
+            - mongodb_volume:/data/db
+        restart: always
         environment:
             - MONGO_INITDB_ROOT_USERNAME=
             - MONGO_INITDB_ROOT_PASSWORD=
@@ -36,9 +37,25 @@ services:
             - mongodb
         depends_on:
             - mongodb
+            - api
+
+    # node container
+    api:
+        build: .
+        ports:
+            - 4000:3000
+        volumes:
+            - .:/usr/src/app
+        environment:
+            PORT: 3000 
+            mongodb_uri: mongodb://mongodb:27017
+        depends_on:
+            - mongodb
+            - mongo-express
+
 
 volumes:
-    data: {}
+    mongodb_volume: {}
 
 # helps us to communicate among containers
 networks:

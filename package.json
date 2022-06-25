@@ -4,6 +4,7 @@
     "description": "Starter application",
     "main": "server.js",
     "scripts": {
+        "docker": "docker-compose -f docker-compose.yaml up",
         "prepare": "husky install",
         "lint": "eslint server.js",
         "dev": "nodemon server.js",
@@ -24,6 +25,7 @@
         "path": "^0.12.7"
     },
     "devDependencies": {
+        "dotenv": "^16.0.1",
         "eslint": "^8.18.0",
         "husky": "^8.0.1",
         "nodemon": "^2.0.18",

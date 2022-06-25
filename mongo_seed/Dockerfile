@@ -2,13 +2,13 @@
 FROM mongo
 
 # copy the dummy data from the local containers to the host conatiners
-COPY accounts.json accounts.json
+COPY accounts.json /usr/src/app/mongo_seed/accounts.json
 
 # add cmd.sh file (list of linux command)
-ADD cmd.sh /
+ADD cmd.sh /usr/src/app/mongo_seed
 
 # make cmd.sh file executable 
-RUN chmod +x /cmd.sh
+RUN chmod +x /usr/src/app/mongo_seed/cmd.sh
 
 # open and execute the commands which inside the file `cmd.sh`
-CMD ["/cmd.sh"]
+CMD ["/usr/src/app/mongo_seed/cmd.sh"]

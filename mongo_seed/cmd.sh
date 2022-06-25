@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # import accounts collection
-mongoimport --host mongodb --db database_name --collection collection_name --type json --file accounts.json --jsonArray
+mongoimport --host mongodb --db bauthdb --collection users --type json --file /usr/src/app/mongo_seed/accounts.json --jsonArray
