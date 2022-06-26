@@ -8,4 +8,6 @@ router.get("/test", controller_appraisal_modules.testAPI);
 
 router.get("/", controller_appraisal_modules.usersAPI);
 
+router.get("/:id", controller_appraisal_modules.userAPI);
+
 module.exports = router;

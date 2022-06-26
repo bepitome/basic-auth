@@ -1,5 +1,4 @@
 const express = require("express");
-const { cli } = require("winston/lib/winston/config");
 /* eslint-disable-next-line */
 const router = express.Router();
 /* eslint-disable-next-line */
@@ -50,12 +49,33 @@ exports.usersAPI = async(req, res, next) => {
 
         res.status(200).send({ result: data });
     } catch (error) {
-        // test database connection
-        const status = await client.db("admin").command({ ping: 1 });
-        if (status.ok != 1) {
-            res.status(501).send({ error: "database is not connected" });
-        } else {
-            res.status(401).send({ error: error });
-        }
+        return res.status(401).send({ result: error.toString() });
+    }
+};
+
+/**
+ * @async
+ * @route   GET /api/v1/user/:id
+ * @returns {Users} user object
+ * @author  {Bawad}
+ * @access  public
+ * @version 1.0
+ */
+
+// eslint-disable-next-line
+exports.userAPI = async(req, res, next) => {
+    const client = mongo_conn_native.client;
+    const { id } = req.params;
+    try {
+        let data = await client
+            .db(DATABASE.NAME)
+            .collection(COLLECTION.USERS)
+            .findOne({ user_id: parseInt(id) });
+
+        if (data === null)
+            return res.status(200).send({ result: "User not registered." });
+        res.status(200).send({ result: data });
+    } catch (error) {
+        return res.status(401).send({ result: error.toString() });
     }
 };
