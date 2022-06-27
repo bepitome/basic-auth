@@ -5,9 +5,15 @@ name: Node.js CI
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+      - develop
+      - "releases/**"
   pull_request:
-    branches: [master]
+    branches:
+      - master
+      - develop
+      - "releases/**"
 
 jobs:
   build:
