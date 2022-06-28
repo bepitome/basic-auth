@@ -4,7 +4,7 @@
     "description": "Starter application",
     "main": "server.js",
     "scripts": {
-        "docker": "docker-compose -f docker-compose.yaml up",
+        "docker": "docker compose down -v && docker-compose -f docker-compose.yaml up",
         "prepare": "husky install",
         "lint": "eslint server.js",
         "dev": "nodemon server.js",
