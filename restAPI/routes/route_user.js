@@ -26,4 +26,6 @@ router.get("/:id", controller_appraisal_modules.userAPI);
 
 router.delete("/remove", controller_appraisal_modules.removeUserAPI);
 
+router.put("/reset", controller_appraisal_modules.resetUserAPI);
+
 module.exports = router;

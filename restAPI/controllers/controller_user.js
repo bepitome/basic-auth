@@ -14,7 +14,6 @@ const { DATABASE, COLLECTION } = require("../../public/constant");
  * @version 1.0
  */
 
-// eslint-disable-next-line
 exports.testAPI = async(req, res, next) => {
     res.status(200).send({
         error: false,
@@ -36,7 +35,6 @@ const mongo_conn_native = require("../../mongo_conn_native").Connection;
  * @version     1.0
  */
 
-// eslint-disable-next-line
 exports.usersAPI = async(req, res, next) => {
     const client = mongo_conn_native.client;
 
@@ -62,7 +60,6 @@ exports.usersAPI = async(req, res, next) => {
  * @version     1.0
  */
 
-// eslint-disable-next-line
 exports.userAPI = async(req, res, next) => {
     const client = mongo_conn_native.client;
     const { id } = req.params;
@@ -70,7 +67,7 @@ exports.userAPI = async(req, res, next) => {
         let data = await client
             .db(DATABASE.NAME)
             .collection(COLLECTION.USERS)
-            .findOne({ user_id: parseInt(id) });
+            .findOne({ id: parseInt(id) });
 
         if (data === null)
             return res.status(200).send({ result: "User not registered." });
@@ -82,7 +79,7 @@ exports.userAPI = async(req, res, next) => {
 
 /**
  * @async
- * @route       POST /api/v1/user/remove
+ * @route       DELETE /api/v1/user/remove
  * @returns     {String} user object
  * @author      Bawad
  * @access      public
@@ -90,7 +87,6 @@ exports.userAPI = async(req, res, next) => {
  * @status      sensitive
  */
 
-// eslint-disable-next-line
 exports.removeUserAPI = async(req, res, next) => {
     const client = mongo_conn_native.client;
     const username = req.body.username;
@@ -107,6 +103,60 @@ exports.removeUserAPI = async(req, res, next) => {
                 .send({ result: "Account has been deleted successfuly." });
         if (data != null && data.deletedCount === 0)
             return res.status(200).send({ result: "Account is not exist." });
+    } catch (error) {
+        return res.status(401).send({ result: error.toString() });
+    }
+};
+
+/**
+ * @async
+ * @route       PUT /api/v1/user/reset
+ * @returns     {String} success message
+ * @author      Bawad
+ * @access      public
+ * @version     1.0
+ * @status      sensitive
+ */
+
+exports.resetUserAPI = async(req, res, next) => {
+    const client = mongo_conn_native.client;
+
+    try {
+        const filter = { username: req.body.username };
+        // options is used to add a new document in case nothing match
+        // const options = { upsert: true };
+        const replacementDocument = {
+            $set: { password: req.body.npassword },
+        };
+
+        let data = await client
+            .db(DATABASE.NAME)
+            .collection(COLLECTION.USERS)
+            .updateOne(filter, replacementDocument);
+
+        console.log("data -------- ", data);
+
+        if (
+            data.acknowledged === true &&
+            data.matchedCount === 1 &&
+            data.modifiedCount === 0
+        ) {
+            return res.status(200).send({
+                message: "Your new password can't be similar to the current password",
+                status: 0,
+            });
+        }
+        if (data.acknowledged === true && data.modifiedCount > 0) {
+            return res.status(200).send({
+                message: "Password has been updated successfuly.",
+                status: 1,
+            });
+        }
+        if (data != null && data.modifiedCount === 0)
+            return res.status(200).send({
+                result: "Account is not exist.",
+                status: 0,
+            });
     } catch (error) {
         return res.status(401).send({ result: error.toString() });
     }
