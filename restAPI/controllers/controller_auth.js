@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 /* eslint-disable-next-line */
 const logger = require("../../logger").logger;
-require("dotenv").config();
 const { DATABASE, COLLECTION } = require("../../public/constant");
 
 const bcrypt = require("bcryptjs"); // import bcrypt to hash passwords
@@ -51,7 +50,7 @@ exports.login = async (req, res, next) => {
     if (data === null)
       return res.status(200).send({ result: "User not registered." });
     const result = await bcrypt.compare(req.body.password, data.password);
-    if (!result)
+    if (result)
       return res.status(401).send({ result: "Password is not correct" });
     const token = await jwt.sign({ data: data }, process.env.SECRET);
     return res.status(200).send({ result: token });
@@ -59,7 +58,3 @@ exports.login = async (req, res, next) => {
     return res.status(401).send({ result: error.toString() });
   }
 };
-
-exports.signup = async (req, res, next) => {
-  
-}
