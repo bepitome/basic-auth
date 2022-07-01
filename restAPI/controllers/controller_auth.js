@@ -12,7 +12,7 @@ const jwt = require("jsonwebtoken"); // import jwt to sign tokens
  * @async
  * @route   GET /api/v1/auth/testAPI
  * @returns {object} test API
- * @author
+ * @author  Hassan Ali
  * @access  public
  * @version 1.0
  */
@@ -33,14 +33,14 @@ const mongo_conn_native = require("../../mongo_conn_native").Connection;
  * @async
  * @route       Post /api/v1/auth/:id
  * @returns     {Users} user object
- * @author
+ * @author      Hassan Ali
  * @access      public
  * @version     1.0
  */
 
 exports.login = async (req, res, next) => {
   const client = mongo_conn_native.client;
-  const { userName ,password} = req.body;
+  const { userName, password } = req.body;
   try {
     let data = await client
       .db(DATABASE.NAME)
@@ -49,9 +49,9 @@ exports.login = async (req, res, next) => {
 
     if (data === null)
       return res.status(200).send({ result: "User not registered." });
-    const result = await bcrypt.compare(password, data.password);
-    if (result)
+    if (password !== data.password)
       return res.status(401).send({ result: "Password is not correct" });
+    // process.env.SECRET is the key to decode the token again using jwt.verify()
     const token = await jwt.sign({ data: data }, process.env.SECRET);
     return res.status(200).send({ result: token });
   } catch (error) {
