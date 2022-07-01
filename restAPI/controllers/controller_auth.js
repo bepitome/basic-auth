@@ -4,8 +4,6 @@ const router = express.Router();
 /* eslint-disable-next-line */
 const logger = require("../../logger").logger;
 const { DATABASE, COLLECTION } = require("../../public/constant");
-
-const bcrypt = require("bcryptjs"); // import bcrypt to hash passwords
 const jwt = require("jsonwebtoken"); // import jwt to sign tokens
 
 /**
