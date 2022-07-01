@@ -5,5 +5,5 @@ const router = express.Router();
 const controller_appraisal_modules = require("../controllers/controller_auth");
 
 router.get("/test", controller_appraisal_modules.testAPI);
-router.post("/:userName", controller_appraisal_modules.login);
+router.post("/login", controller_appraisal_modules.login);
 module.exports = router;

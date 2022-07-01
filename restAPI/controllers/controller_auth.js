@@ -40,7 +40,7 @@ const mongo_conn_native = require("../../mongo_conn_native").Connection;
 
 exports.login = async (req, res, next) => {
   const client = mongo_conn_native.client;
-  const { userName } = req.params;
+  const { userName ,password} = req.body;
   try {
     let data = await client
       .db(DATABASE.NAME)
@@ -49,7 +49,7 @@ exports.login = async (req, res, next) => {
 
     if (data === null)
       return res.status(200).send({ result: "User not registered." });
-    const result = await bcrypt.compare(req.body.password, data.password);
+    const result = await bcrypt.compare(password, data.password);
     if (result)
       return res.status(401).send({ result: "Password is not correct" });
     const token = await jwt.sign({ data: data }, process.env.SECRET);
