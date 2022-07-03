@@ -1,0 +1,470 @@
+{
+	"info": {
+		"_postman_id": "5ea62671-ebc9-4526-97dc-8df8eb380d15",
+		"name": "bepitome",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20449209"
+	},
+	"item": [
+		{
+			"name": "basic-auth",
+			"item": [
+				{
+					"name": "Test API",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{docker_base_url}}/api/v1/auth/test",
+							"host": [
+								"{{docker_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"test"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Test API",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/auth/test",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"test"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"error\": false,\n    \"code\": 200,\n    \"status\": \"succsess\",\n    \"message\": \"Test API Works\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{docker_base_url}}/api/v1/users",
+							"host": [
+								"{{docker_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success - List all users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/users",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n\t\"result\": [\n\t\t{\n\t\t\t\"_id\": \"62c1db385f234803c0cc450b\",\n\t\t\t\"id\": 8013930,\n\t\t\t\"first_name\": \"Webster\",\n\t\t\t\"last_name\": \"Kigelman\",\n\t\t\t\"email\": \"wkigelman0@skyrock.com\",\n\t\t\t\"username\": \"wkigelman0\",\n\t\t\t\"company\": \"Yata\",\n\t\t\t\"password\": \"RzxNePWmk1U\",\n\t\t\t\"gender\": \"Male\"\n\t\t},\n\t\t{\n\t\t\t\"_id\": \"62c1db385f234803c0cc450c\",\n\t\t\t\"id\": 8734514,\n\t\t\t\"first_name\": \"Sherilyn\",\n\t\t\t\"last_name\": \"Hercules\",\n\t\t\t\"email\": \"shercules1@wikipedia.org\",\n\t\t\t\"username\": \"shercules1\",\n\t\t\t\"company\": \"Thoughtbeat\",\n\t\t\t\"password\": \"0LZall9s\",\n\t\t\t\"gender\": \"Female\"\n\t\t},\n\t\t{\n\t\t\t\"_id\": \"62c1db385f234803c0cc450d\",\n\t\t\t\"id\": 5784489,\n\t\t\t\"first_name\": \"Granthem\",\n\t\t\t\"last_name\": \"Critchlow\",\n\t\t\t\"email\": \"gcritchlow2@eepurl.com\",\n\t\t\t\"username\": \"gcritchlow2\",\n\t\t\t\"company\": \"Yakijo\",\n\t\t\t\"password\": \"fFhRjA\",\n\t\t\t\"gender\": \"Male\"\n\t\t},\n\t\t{\n\t\t\t\"_id\": \"62c1db385f234803c0cc450e\",\n\t\t\t\"id\": 2505452,\n\t\t\t\"first_name\": \"Whitby\",\n\t\t\t\"last_name\": \"Risbrough\",\n\t\t\t\"email\": \"wrisbrough3@mediafire.com\",\n\t\t\t\"username\": \"wrisbrough3\",\n\t\t\t\"company\": \"Topicware\",\n\t\t\t\"password\": \"yO30jafB6Ss\",\n\t\t\t\"gender\": \"Male\"\n\t\t}\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Retrieve a user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{docker_base_url}}/api/v1/users/:id",
+							"host": [
+								"{{docker_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8465961"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success - Retrieve a user",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/users/:id",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "8465961"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n\t\"result\": {\n\t\t\"_id\": \"62c1db385f234803c0cc450b\",\n\t\t\"id\": 8013930,\n\t\t\"first_name\": \"Webster\",\n\t\t\"last_name\": \"Kigelman\",\n\t\t\"email\": \"wkigelman0@skyrock.com\",\n\t\t\"username\": \"wkigelman0\",\n\t\t\"company\": \"Yata\",\n\t\t\"password\": \"123123\",\n\t\t\"gender\": \"Male\"\n\t}\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"fsawfoot0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{docker_base_url}}/api/v1/users/remove",
+							"host": [
+								"{{docker_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"remove"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success - Delete user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"fsawfoot0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/users/remove",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"remove"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"result\": \"Account has been deleted successfuly.\",\n    \"status\": 1\n}"
+						},
+						{
+							"name": "200 Success - Delete user (Not Exist)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\": \"fsawfoot0\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/users/remove",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"remove"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"result\": \"Account is not exist.\",\n    \"status\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"wkigelman0\",\n\t\"npassword\": \"123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{docker_base_url}}/api/v1/users/reset",
+							"host": [
+								"{{docker_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"reset"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success - Reset Password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"wkigelman0\",\n\t\"npassword\": \"123123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/users/reset",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"reset"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"message\": \"Password has been updated successfuly.\",\n    \"status\": 1\n}"
+						},
+						{
+							"name": "200 Failure - Reset Password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"username\": \"wkigelman\",\n\t\"npassword\": \"123123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/users/reset",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"reset"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"result\": \"Account is not exist.\",\n    \"status\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Basic d3Jpc2Jyb3VnaDM6eU8zMGphZkI2U3M=",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{docker_base_url}}/api/v1/auth/login",
+							"host": [
+								"{{docker_base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200 Success - Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/auth/login",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"result\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYyYzFkYjM4NWYyMzQ4MDNjMGNjNDUwZSIsImlkIjoyNTA1NDUyLCJmaXJzdF9uYW1lIjoiV2hpdGJ5IiwibGFzdF9uYW1lIjoiUmlzYnJvdWdoIiwiZW1haWwiOiJ3cmlzYnJvdWdoM0BtZWRpYWZpcmUuY29tIiwidXNlcm5hbWUiOiJ3cmlzYnJvdWdoMyIsImNvbXBhbnkiOiJUb3BpY3dhcmUiLCJwYXNzd29yZCI6InlPMzBqYWZCNlNzIiwiZ2VuZGVyIjoiTWFsZSJ9LCJpYXQiOjE2NTY4NzI5MDl9.hNqC4qE2gVb_Xs3RZmi6wiDpzqeimTuVaTyBAZ0cD_M\"\n}"
+						},
+						{
+							"name": "200 Failure - Login (invalid encoding)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/auth/login",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"result\": \"User not registered.\"\n}"
+						},
+						{
+							"name": "200 Failure - Login (missing authorization header)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/auth/login",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n\t\"result\": \"Request does not have Authorization header\"\n}"
+						},
+						{
+							"name": "200 Failure - Login (empty authorization value)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{docker_base_url}}/api/v1/auth/login",
+									"host": [
+										"{{docker_base_url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": null,
+							"cookie": [],
+							"body": "{\n\t\"result\": \"Authorization header can't be empty\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "docker_base_url",
+			"value": "http://localhost:4000"
+		}
+	]
+}
