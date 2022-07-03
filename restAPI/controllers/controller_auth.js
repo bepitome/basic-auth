@@ -62,7 +62,10 @@ exports.login = async(req, res, next) => {
         }
 
         // desctruct username and password
-        const [_username, _password] = buf.toString().split(":");
+        const [_username, _password] = buf
+            .toString()
+            .split(":")
+            .map((i) => i.trim());
 
         let data = await client
             .db(DATABASE.NAME)
@@ -71,7 +74,6 @@ exports.login = async(req, res, next) => {
 
         if (data === null)
             return res.status(200).send({ result: "User not registered." });
-
         if (_password !== data.password)
             return res.status(401).send({ result: "Password is not correct" });
 

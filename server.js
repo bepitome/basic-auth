@@ -5,6 +5,7 @@ require("./logger").intialize();
 require("dotenv").config();
 const logger = require("./logger").logger;
 const path = require("path");
+const jwt = require("jsonwebtoken");
 const mongo_conn_native = require("./mongo_conn_native").Connection;
 
 // Routes
@@ -38,6 +39,35 @@ app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Credentials", "true");
 	next();
 });
+
+app.use("/", (req, res, next) => {
+	/**
+     *  token validation middleware
+     *
+     *  if token is valid proceed with the request.
+     *  otherwise @return unauthorized
+     *
+     */
+
+	try {
+		const token = req.headers.authorization;
+		const isValid = checkToken(token);
+		if (isValid) {
+			return next();
+		}
+		return res
+			.status(200)
+			.send({ result: "Unauthorized. Authorization header can't be empty." });
+	} catch (error) {
+		return res.status(200).send({ result: error });
+	}
+});
+
+function checkToken(token) {
+	if (token === undefined || token === "") return false;
+	const data = jwt.verify(token, process.env.SECRET);
+	if (data !== null || data !== "" || data != undefined) return true;
+}
 
 mongo_conn_native.connectToMongo().then(
 	async() => {

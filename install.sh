@@ -8,4 +8,4 @@ npm i --save-dev eslint
 npm i --save-dev husky
 npx husky install
 npm pkg set scripts.prepare "husky install"
-npm run dev
+npm run docker
