@@ -98,11 +98,15 @@ exports.removeUserAPI = async(req, res, next) => {
             .deleteOne({ username: username });
 
         if (data != null && data.deletedCount === 1)
-            return res
-                .status(200)
-                .send({ result: "Account has been deleted successfuly." });
+            return res.status(200).send({
+                result: "Account has been deleted successfuly.",
+                status: 1,
+            });
         if (data != null && data.deletedCount === 0)
-            return res.status(200).send({ result: "Account is not exist." });
+            return res.status(200).send({
+                result: "Account is not exist.",
+                status: 0,
+            });
     } catch (error) {
         return res.status(401).send({ result: error.toString() });
     }

@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-app.use("/", (req, res, next) => {
+app.use("/api/v1/users", (req, res, next) => {
 	/**
      *  token validation middleware
      *
