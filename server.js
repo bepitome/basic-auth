@@ -33,15 +33,15 @@ app.use(bodyParser.json({ limit: "500mb", extended: true }));
 
 // For CORS
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Methods", "*");
+	res.header("Access-Control-Allow-Headers", "*");
+	res.header("Access-Control-Allow-Credentials", "true");
+	next();
 });
 
 app.use("/", (req, res, next) => {
-    /**
+	/**
      *  token validation middleware
      *
      *  if token is valid proceed with the request.
@@ -49,45 +49,45 @@ app.use("/", (req, res, next) => {
      *
      */
 
-    try {
-        const token = req.headers.authorization;
-        const isValid = checkToken(token);
-        if (isValid) {
-            return next();
-        }
-        return res
-            .status(200)
-            .send({ result: "Unauthorized. Authorization header can't be empty." });
-    } catch (error) {
-        return res.status(200).send({ result: error });
-    }
+	try {
+		const token = req.headers.authorization;
+		const isValid = checkToken(token);
+		if (isValid) {
+			return next();
+		}
+		return res
+			.status(200)
+			.send({ result: "Unauthorized. Authorization header can't be empty." });
+	} catch (error) {
+		return res.status(200).send({ result: error });
+	}
 });
 
 function checkToken(token) {
-    if (token === undefined || token === "") return false;
-    const data = jwt.verify(token, process.env.SECRET);
-    if (data !== null || data !== "" || data != undefined) return true;
+	if (token === undefined || token === "") return false;
+	const data = jwt.verify(token, process.env.SECRET);
+	if (data !== null || data !== "" || data != undefined) return true;
 }
 
 mongo_conn_native.connectToMongo().then(
-    async() => {
-        // Routes
+	async() => {
+		// Routes
 
-        // testing APIs
-        app.use("/api/v1/users", routeUserAPI);
-        app.use("/api/v1/auth", routeAuthAPI);
+		// testing APIs
+		app.use("/api/v1/users", routeUserAPI);
+		app.use("/api/v1/auth", routeAuthAPI);
 
-        let port = process.env.PORT || 3016;
-        app.listen(port, async() => {
-            logger.info(`Test Node is listening on port ${port}`);
-            console.log(`Test Node is listening on port ${port}`);
-        });
-    },
-    (err) => {
-        console.log("Unable to connect mongo");
-        console.log(err);
-        logger.error(err);
-    }
+		let port = process.env.PORT || 3016;
+		app.listen(port, async() => {
+			logger.info(`Test Node is listening on port ${port}`);
+			console.log(`Test Node is listening on port ${port}`);
+		});
+	},
+	(err) => {
+		console.log("Unable to connect mongo");
+		console.log(err);
+		logger.error(err);
+	}
 );
 
 exports.app = app;
