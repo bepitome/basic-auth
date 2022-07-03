@@ -1,20 +1,24 @@
-# Basic authentication project
+# Basic Authentication project
 
-### Project description
+## Project Description
 
-Basic authentication
+In this project you will learn how to deal with `Basic Authentication`.
+
+### What is Basic Authentication?
+
+[Basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) is a simple authentication scheme built into the HTTP protocol. The client sends HTTP requests with the Authorization header that contains the word Basic word followed by a space and a base64-encoded string `username:password`.
 
 ---
 
 ### Installation
 
-You need to install all the below to run the project.
+You need to install all the below to run the backend.
 
 - [docker](https://docs.docker.com/get-docker/)
 - [nodejs](https://nodejs.org/en/download/)
 - [mongodb](https://www.mongodb.com/docs/manual/installation/)
 
-> We are going to deploy the apis on cloud to allow you interact with the apis without install anything. (wait for us)
+> We are going to deploy the APIs on cloud to allow you interact with the AIPs without install anything. (wait for it)
 
 ```bash
 # make install.sh file executable
@@ -26,7 +30,7 @@ chmod +x ./install.sh
 
 ### Run project
 
-No need run the project if you already run ./install.sh file
+No need run the project if you already run `./install.sh` file
 
 ```bash
 # using Makefile
@@ -43,3 +47,30 @@ PORT=3000
 mongodb_uri=mongodb://localhost:27017/
 SECRET=secret
 ```
+
+---
+
+## Challenge
+
+- Authenticate successfuly using the below test account.
+  - username: dbroadbridge4
+  - password: fUVh0U1prk
+
+> You should receive a valid token to be used for other APIs.
+
+- Design and display user profile.
+- Add the below functionalities for the user:
+  - Reset password
+  - Delete account
+
+> There is postman collection to know more about the available APIs with file name (basic-auth-postman-collection.json)
+
+---
+
+### Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### License
+
+[MIT](https://choosealicense.com/licenses/mit/)
