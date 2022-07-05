@@ -79,8 +79,8 @@ mongo_conn_native.connectToMongo().then(
 
 		let port = process.env.PORT || 3016;
 		app.listen(port, async() => {
-			logger.info(`Test Node is listening on port ${port}`);
-			console.log(`Test Node is listening on port ${port}`);
+			logger.info("Server is running");
+			console.log("Node server is running.");
 		});
 	},
 	(err) => {
