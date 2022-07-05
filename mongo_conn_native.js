@@ -1,13 +1,12 @@
 const { MongoClient } = require("mongodb");
 const config = require("config");
 require("dotenv").config();
-const uri = config.mongo_conn_str;
+// const uri = config.mongo_conn_str; // used for local server only
+const uri = process.env.mongodb_uri; // used for docker and local server
 class Connection {
     static async connectToMongo() {
-        // if (this.db) return this.db;
-        const url = process.env.mongodb_uri;
-        console.log(" this is ", url);
-        let mongo_client = await MongoClient.connect(url, this.options);
+        if (this.db) return this.db;
+        let mongo_client = await MongoClient.connect(uri, this.options);
         this.client = mongo_client;
         this.db = await mongo_client.db();
         return this.db;
