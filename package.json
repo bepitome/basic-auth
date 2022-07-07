@@ -8,8 +8,7 @@
         "prepare": "husky install",
         "lint": "eslint server.js",
         "dev": "nodemon server.js",
-        "start": "node server.js",
-        "install": "chmod +x ./install.sh && ./install.sh"
+        "start": "node server.js"
     },
     "keywords": [
         "node",
