@@ -26,11 +26,18 @@ You need to install all the below to run the backend.
 # run and install all the dependencies (prefered for fresh installation only)
 npm run install
 
-# rerun using Makefile
-make run
+# run docker container using Makefile
+make run  # run container
+make stop # stop container
 
-# rerun using Docker
+# run docker container using npm script
 npm run docker
+
+# serve node apis locally
+npm run local
+
+# run pre-commit hooks
+npm run prepare
 ```
 
 #### Create a new `.env` file in project root and paste the below three lines

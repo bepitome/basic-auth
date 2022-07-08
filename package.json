@@ -4,12 +4,12 @@
     "description": "Basic authentication backend simulation",
     "main": "server.js",
     "scripts": {
-        "docker": "docker compose down -v && docker-compose -f docker-compose.yaml up",
         "prepare": "husky install && npm run fixes",
         "fixes": "npm run lint -- --fix && npm run lint",
         "lint": "eslint '**/*.js' --ignore-pattern node_modules/",
         "local": "nodemon server.js",
-        "start": "node server.js"
+        "start": "node server.js",
+        "docker": "docker compose down -v && docker-compose -f docker-compose.yaml up"
     },
     "keywords": [
         "node",
