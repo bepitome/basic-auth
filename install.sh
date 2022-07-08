@@ -1,5 +1,6 @@
 #!/bin/bash
 
+npm i npm-install-all
 npm-install-all server.js 
 npm-install-all mongo_conn_native.js
 npm-install-all logger.js

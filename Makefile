@@ -1,6 +1,6 @@
 ## Run the server locally
 run:
-	docker-compose -f docker-compose.yaml up -d
+	docker compose down -v && docker-compose -f docker-compose.yaml up -d
 
 ## Stop the server
 stop:

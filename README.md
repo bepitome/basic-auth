@@ -18,29 +18,29 @@ You need to install all the below to run the backend.
 - [nodejs](https://nodejs.org/en/download/)
 - [mongodb](https://www.mongodb.com/docs/manual/installation/)
 
-> We are going to deploy the APIs on cloud to allow you interact with the AIPs without install anything. (wait for it)
-
-```bash
-# make install.sh file executable
-chmod +x ./install.sh
-
-# run install.sh file to install all project dependencies
-./install.sh
-```
+> We are going to deploy the APIs on cloud to allow you interact with the APIs without install anything. (wait for it)
 
 ### Run project
 
-No need run the project if you already run `./install.sh` file
-
 ```bash
-# using Makefile
-make run
+# run and install all the dependencies (prefered for fresh installation only)
+npm run install
 
-# docker
+# run docker container using Makefile
+make run  # run container
+make stop # stop container
+
+# run docker container using npm script
 npm run docker
+
+# serve node apis locally
+npm run local
+
+# run pre-commit hooks
+npm run prepare
 ```
 
-### Create a new `.env` file in project root and paste the below two lines
+#### Create a new `.env` file in project root and paste the below three lines
 
 ```bash
 PORT=3000
