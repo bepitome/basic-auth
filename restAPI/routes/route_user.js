@@ -6,7 +6,7 @@ const controller_appraisal_modules = require("../controllers/controller_user");
 
 // isAdmin validation
 router.use("/remove", (req, res, next) => {
-    /**
+	/**
      *  user type validation should be from database
      *
      *  needs to call userAPI to get user details, then validate it's type,
@@ -15,7 +15,7 @@ router.use("/remove", (req, res, next) => {
      *  otherwise @return unauthorized
      *
      */
-    next();
+	next();
 });
 
 router.get("/test", controller_appraisal_modules.testAPI);

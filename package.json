@@ -1,13 +1,14 @@
 {
-    "name": "btemplate",
+    "name": "bauth",
     "version": "1.0.0",
-    "description": "Starter application",
+    "description": "Basic authentication backend simulation",
     "main": "server.js",
     "scripts": {
         "docker": "docker compose down -v && docker-compose -f docker-compose.yaml up",
-        "prepare": "husky install",
-        "lint": "eslint server.js",
-        "dev": "nodemon server.js",
+        "prepare": "husky install && npm run fixes",
+        "fixes": "npm run lint -- --fix && npm run lint",
+        "lint": "eslint '**/*.js' --ignore-pattern node_modules/",
+        "local": "nodemon server.js",
         "start": "node server.js"
     },
     "keywords": [
