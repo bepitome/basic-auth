@@ -32,4 +32,4 @@ jobs:
           cache: "npm"
       - run: npm install -g eslint
       - run: eslint --init
-      - run: npm run prepare
+      - run: npm run lint
