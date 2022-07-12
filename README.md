@@ -12,15 +12,16 @@ In this project you will learn how to deal with `Basic Authentication`.
 
 ### Installation
 
-You need to install all the below to run the backend.
+You have the choice to run the project using docker or locally. If you want to go with Docker no need to install nodejs and mongodb, and if you want to go with local no need to install docker.
 
+##### Docker 
 - [docker](https://docs.docker.com/get-docker/)
 - [nodejs](https://nodejs.org/en/download/)
 - [mongodb](https://www.mongodb.com/docs/manual/installation/)
 
 > We are going to deploy the APIs on cloud to allow you interact with the APIs without install anything. (wait for it)
 
-### Run project
+### Run project with Docker
 
 ```bash
 # run and install all the dependencies (prefered for fresh installation only)
@@ -32,12 +33,19 @@ make stop # stop container
 
 # run docker container using npm script
 npm run docker
+```
+### Run project locally
 
+```bash
 # serve node apis locally
 npm run local
+```
 
-# run pre-commit hooks
-npm run prepare
+### Test your changes
+
+```bash
+# run lint & pre-commit hooks at the same time
+npm run prepare 
 ```
 
 #### Create a new `.env` file in project root and paste the below three lines
@@ -70,6 +78,8 @@ SECRET=secret
 ### Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Click [here](https://github.com/bepitome/basic-auth/issues/new/choose) to report a new issue.
 
 ### License
 
