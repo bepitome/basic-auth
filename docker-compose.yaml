@@ -41,6 +41,7 @@ services:
 
     # node container
     api:
+        tty: true
         build: .
         ports:
             - 4000:3000
