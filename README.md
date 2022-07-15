@@ -14,7 +14,6 @@ In this project you will learn how to deal with `Basic Authentication`.
 
 You have the choice to run the project using docker or locally. If you want to go with Docker no need to install nodejs and mongodb, and if you want to go with local no need to install docker.
 
-##### Docker 
 - [docker](https://docs.docker.com/get-docker/)
 - [nodejs](https://nodejs.org/en/download/)
 - [mongodb](https://www.mongodb.com/docs/manual/installation/)
