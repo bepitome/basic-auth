@@ -33,6 +33,7 @@ make stop # stop container
 # run docker container using npm script
 npm run docker
 ```
+
 ### Run project locally
 
 ```bash
@@ -44,7 +45,7 @@ npm run local
 
 ```bash
 # run lint & pre-commit hooks at the same time
-npm run prepare 
+npm run prepare
 ```
 
 #### Create a new `.env` file in project root and paste the below three lines
@@ -60,6 +61,7 @@ SECRET=secret
 ## Challenge
 
 - Authenticate successfuly using the below test account.
+
   - username: dbroadbridge4
   - password: fUVh0U1prk
 

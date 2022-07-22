@@ -33,15 +33,15 @@ app.use(bodyParser.json({ limit: "500mb", extended: true }));
 
 // For CORS
 app.use((req, res, next) => {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Methods", "*");
-	res.header("Access-Control-Allow-Headers", "*");
-	res.header("Access-Control-Allow-Credentials", "true");
-	next();
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    res.header("Access-Control-Allow-Credentials", "true");
+    next();
 });
 
 app.use("/api/v1/users", (req, res, next) => {
-	/**
+    /**
      *  token validation middleware
      *
      *  if token is valid proceed with the request.
@@ -49,51 +49,51 @@ app.use("/api/v1/users", (req, res, next) => {
      *
      */
 
-	try {
-		const token = req.headers.authorization;
-		const [isValid, msg] = checkToken(token);
-		if (isValid) {
-			return next();
-		}
-		return res.status(200).send({ result: msg });
-	} catch (error) {
-		return res.status(200).send({ result: error });
-	}
+    try {
+        const token = req.headers.authorization;
+        const [isValid, msg] = checkToken(token);
+        if (isValid) {
+            return next();
+        }
+        return res.status(200).send({ result: msg });
+    } catch (error) {
+        return res.status(200).send({ result: error });
+    }
 });
 
 function checkToken(token) {
-	if (token === undefined || token === "")
-		return [false, "Unauthorized. Authorization header can't be empty."];
-	if (token.toLowerCase().includes("basic")) {
-		return [
-			false,
-			"Please pass a valid token, basic authentication is only allowed in login endpoint",
-		];
-	}
+    if (token === undefined || token === "")
+        return [false, "Unauthorized. Authorization header can't be empty."];
+    if (token.toLowerCase().includes("basic")) {
+        return [
+            false,
+            "Please pass a valid token, basic authentication is only allowed in login endpoint",
+        ];
+    }
 
-	const data = jwt.verify(token, process.env.SECRET);
-	if (data !== null || data !== "" || data != undefined) return [true, ""];
+    const data = jwt.verify(token, process.env.SECRET);
+    if (data !== null || data !== "" || data != undefined) return [true, ""];
 }
 
 mongo_conn_native.connectToMongo().then(
-	async() => {
-		// Routes
+    async() => {
+        // Routes
 
-		// testing APIs
-		app.use("/api/v1/users", routeUserAPI);
-		app.use("/api/v1/auth", routeAuthAPI);
+        // testing APIs
+        app.use("/api/v1/users", routeUserAPI);
+        app.use("/api/v1/auth", routeAuthAPI);
 
-		let port = process.env.PORT || 3016;
-		app.listen(port, async() => {
-			logger.info("Server is running");
-			console.log("Node server is running.");
-		});
-	},
-	(err) => {
-		console.log("Unable to connect mongo");
-		console.log(err);
-		logger.error(err);
-	}
+        let port = process.env.PORT || 3016;
+        app.listen(port, async() => {
+            logger.info("Server is running");
+            console.log("Node server is running.");
+        });
+    },
+    (err) => {
+        console.log("Unable to connect mongo");
+        console.log(err);
+        logger.error(err);
+    }
 );
 
 exports.app = app;
