@@ -44,6 +44,10 @@ exports.login = async(req, res) => {
 	const [isValid, msg] = checkAuth(authorization);
 	if (!isValid) return res.status(200).send({ result: msg });
 
+
+
+
+
 	try {
 		// remove Basic word
 		var [basic, auth] = authorization.split(" ");
@@ -81,7 +85,7 @@ exports.login = async(req, res) => {
 		//                    for decoding you should use jwt.verify() method
 		//                    and pass the same SECRET.
 		const token = jwt.sign({ data: data }, process.env.SECRET);
-		return res.status(200).send({ result: token });
+		return res.status(200).send({ result: { accessToken: token, id: data.id }});
 	} catch (error) {
 		return res.status(401).send({ result: error.toString() });
 	}
