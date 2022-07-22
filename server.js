@@ -55,18 +55,20 @@ app.use("/api/v1/users", (req, res, next) => {
 		if (isValid) {
 			return next();
 		}
-		return res
-			.status(200)
-			.send({ result: msg });
+		return res.status(200).send({ result: msg });
 	} catch (error) {
 		return res.status(200).send({ result: error });
 	}
 });
 
 function checkToken(token) {
-	if (token === undefined || token === "") return [false, "Unauthorized. Authorization header can't be empty."]
-	if (token.toLowerCase().includes('basic')) {
-		return [false, "Please pass a valid token, basic authentication is only allowed in login endpoint"]
+	if (token === undefined || token === "")
+		return [false, "Unauthorized. Authorization header can't be empty."];
+	if (token.toLowerCase().includes("basic")) {
+		return [
+			false,
+			"Please pass a valid token, basic authentication is only allowed in login endpoint",
+		];
 	}
 
 	const data = jwt.verify(token, process.env.SECRET);
