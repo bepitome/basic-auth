@@ -63,9 +63,20 @@ SECRET=secret
   - username: dbroadbridge4
   - password: fUVh0U1prk
 
+<<<<<<< HEAD
 - Display user profile (first name, last name, email, username, company, gender)
 
 - Add teammate section (you should display all the employees who is working at the same company as a list below user profile.)
+||||||| parent of ba9eaa9... added user-id in login api
+> You should receive a valid token to be used for other APIs.
+
+- Design and display user profile.
+- Add the below functionalities for the user:
+  - Reset password
+  - Delete account
+=======
+- Display user profile (name, email, 
+>>>>>>> ba9eaa9... added user-id in login api
 
 > You should receive a valid token to be used for other APIs.
 > There is postman collection to know more about the available APIs with file name (basic-auth-postman-collection.json)
