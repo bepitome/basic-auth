@@ -64,13 +64,9 @@ SECRET=secret
   - username: dbroadbridge4
   - password: fUVh0U1prk
 
+- Display user profile (name, email, 
+
 > You should receive a valid token to be used for other APIs.
-
-- Design and display user profile.
-- Add the below functionalities for the user:
-  - Reset password
-  - Delete account
-
 > There is postman collection to know more about the available APIs with file name (basic-auth-postman-collection.json)
 
 ---
